@@ -118,25 +118,46 @@ let names = [
   { ShepherdOfTheTrees: 'Treebeard' }
 ];
 
+
+
 function getKeys() {
   let key;
+  let abcd = [];
   for (let i = 0; i < names.length; i++) {
     for (let j = 0; j < names.length; j++) {
       for (key in names[i]) {
+        //   console.log('key', key)
         for (let currentKey in names[j]) {
-
+            // console.log('currentKey', currentKey)
           if (key === currentKey && names[i][key] !== names[j][currentKey]) {
+            
+            // console.log(currentKey);
             let newNode = names[i];
             newNode.next = names[j];
             map.set(key, newNode);
+            abcd.push(key);
+            // console.log('newNode', newNode)
             i++;
-         
+          }
+          console.log(abcd)
+
+          if (!key.includes(abcd)) {
+            map.set(key, names[i][key]); 
           }
 
-          else if (key !== 'Hobbit' && key !== 'Maiar') {
-            // if (key !== 'Hobbit' && key !== 'Maiar') {
-            map.set(key, names[i][key]);
-          }
+        //   if(map._slots[i].key
+
+        //    if (map._slots[i] && map._slots[i].key) {
+        //        console.log(map._slots[i].key, 'key')
+        //        if(map._slots[i].key) {
+        //            console.log(map._slots[i].key, 'values')
+        //        } else {
+        //            console.log(key, 'keys')
+        //         map.set(key, names[i][key]);
+        //        }
+        //         //    console.log(map._slots[j].key, 'key')
+                
+        //  }
         }
       }
     }
